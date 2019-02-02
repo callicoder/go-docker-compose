@@ -9,3 +9,5 @@ Clone the repository and type the following command to start the app -
 ```bash
 $ docker-compose up
 ```
+
+Read the Tutorial: [Docker Compose: Defining and running multi-container docker applications](http://localhost:1313/docker-compose-multi-container-orchestration-golang/)
