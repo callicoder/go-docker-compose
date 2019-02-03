@@ -11,7 +11,7 @@ $ docker-compose up
 ```
 
 ```bash
-curl http://localhost:8080/qod
+$ curl http://localhost:8080/qod
 If I work as hard as I can, I wonder how much I can do in a day?
 ```
 
