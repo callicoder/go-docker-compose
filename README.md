@@ -10,4 +10,9 @@ Clone the repository and type the following command to start the app -
 $ docker-compose up
 ```
 
+```bash
+curl http://localhost:8080/qod
+If I work as hard as I can, I wonder how much I can do in a day?
+```
+
 Read the Tutorial: [Docker Compose: Defining and running multi-container docker applications](http://localhost:1313/docker-compose-multi-container-orchestration-golang/)
