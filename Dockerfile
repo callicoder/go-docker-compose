@@ -1,26 +1,27 @@
 # Dockerfile References: https://docs.docker.com/engine/reference/builder/
 
-# Start from golang:1.11-alpine base image
-FROM golang:1.11-alpine
+# Start from golang:1.12-alpine base image
+FROM golang:1.12-alpine
+
+# The latest alpine images don't have some tools like (`git` and `bash`).
+# Adding git, bash and openssh to the image
+RUN apk update && apk upgrade && \
+    apk add --no-cache bash git openssh
 
 # Add Maintainer Info
 LABEL maintainer="Rajeev Singh <rajeevhub@gmail.com>"
 
 # Set the Current Working Directory inside the container
-WORKDIR $GOPATH/src/github.com/callicoder/go-docker-compose
+WORKDIR /app
 
-# Copy everything from the current directory to the PWD(Present Working Directory) inside the container
+# Copy everything from the current directory to the Working Directory inside the container
 COPY . .
 
-# Download all the dependencies
-# https://stackoverflow.com/questions/28031603/what-do-three-dots-mean-in-go-command-line-invocations
-RUN go get -d -v ./...
+# Build the Go app
+RUN go build -o main .
 
-# Install the package
-RUN go install -v ./...
-
-# This container exposes port 8080 to the outside world
+# Expose port 8080 to the outside world
 EXPOSE 8080
 
 # Run the executable
-CMD ["go-docker-compose"]
+CMD ["./main"]
